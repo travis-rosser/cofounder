@@ -161,8 +161,12 @@ Brainstorm ends when the founder says so or when there is a spec to accept.
 - First: `git status`. Then size the change (above). A Feature starts by creating its
   worktree (Git and parallel sessions, below), before any file is touched. Material work starts from a spec; tweaks go straight to
   `docs/UPDATES.md` and get built.
-- Verify before claiming done. Run it, test it, look at it. Report what you actually saw,
+- Verify before claiming done. Run it, test it, look at it. For anything on a screen,
+  that means opening it yourself, not reading the code. Report what you actually saw,
   including failures.
+- **When something is broken, find the cause before fixing it.** Where did it come from,
+  and does the same problem exist anywhere else? Fix that. Patching each symptom as it
+  shows up is how a project fills with fixes nobody understands.
 - Docs change in the same body of work as the behavior they describe.
 
 ### Review: "let's review", "where are we", "what's fragile"
@@ -191,14 +195,37 @@ user will see is built or changed.**
 Standards:
 - Make deliberate choices: typography, color, spacing, layout. Avoid the defaults every
   AI produces: stock gradients, glass effects, the same three fonts.
-- Icons come from a real icon set. Default: **Lucide** (free, consistent, ships with
-  shadcn/ui). If the project already uses another set, stay with it. Never a Unicode
-  character or a CSS shape standing in for an icon.
+- **Shared parts, from the first screen.** A product looks homemade when every screen
+  builds its own buttons, fields and cards, each slightly different. So when you build the
+  first real screen, build its pieces as shared parts in one place: buttons, text fields,
+  dropdowns, cards, pop-ups, page headers, empty states. Set one small list of text sizes,
+  spacing steps, corner roundings and named colors at the same time. This is part of
+  building that screen, not a separate phase before it.
+- **Every later screen reuses the parts.** Before building a piece, check whether it
+  exists. If it is missing, add it to the shared parts, not to the one screen. If a part
+  needs to look different somewhere, give the part a new option; do not override it on
+  that screen. If the project's tools come with a standard set of parts, build on that
+  rather than from scratch.
+- **Designs from elsewhere come in as parts.** When the founder brings a design from a
+  design tool, a mockup, or another project, take its colors, type, spacing and
+  components as the starting shared parts, fitted to this project's folder. Then build the
+  screens from those parts. Do not paste the design in screen by screen, and do not keep
+  two styles side by side.
+- **Placeholder data is fine** for laying out and judging a screen; it is often the only
+  way to see how it looks. Replace it with real data before real people rely on the
+  screen, and never show made-up numbers to users as if they were real.
+- Icons come from a real icon set. Default: **Font Awesome Free**, installed with the
+  first screen. If the project already uses another set, stay with it. Never a typed
+  symbol or a hand-drawn shape standing in for an icon.
 - Design every state: empty, loading, error, partial, success. The empty state is the
   first thing a new user sees.
 - Works on a phone. Readable contrast. Keyboard reachable.
-- One consistent system per project (spacing scale, type scale, color roles), recorded
-  in `docs/ARCHITECTURE.md` once it exists.
+- **Look at it yourself before calling it done.** Open the screen in a browser, at normal
+  size and at phone size, and fix what is off. Reading the code is not looking. The
+  founder should never be the first person to see a broken screen.
+- Record the shared parts, where they live, and the lists of sizes and colors in
+  `docs/ARCHITECTURE.md` → Design system, so the next session reuses them instead of
+  rebuilding.
 
 ### QA agent
 

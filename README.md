@@ -353,7 +353,7 @@ them, with their standards written right into the file so they work with nothing
 
 | Agent | Runs when | Exists to |
 |---|---|---|
-| Design | Any screen a user will see gets built | Stop generic, forgettable UI. Real icon set, every state designed, works on a phone. |
+| Design | Any screen a user will see gets built | Stop generic, forgettable UI. Shared parts from the first screen, outside designs brought in as parts, Font Awesome icons, every state designed, checked on a phone before it's called done. |
 | QA | Before any Feature is called done. Always for money, data, login | Break it first: bad input, refresh mid-flow, slow network. Reports, doesn't fix. |
 | Launch | "Let's go live," and raised by the agent at First users | Hosting, domain, secrets, backups, rollback, and "can a stranger use this." |
 
@@ -409,7 +409,8 @@ project has a lot of features, this file turns into an index and the detail move
 
 ### `docs/ARCHITECTURE.md`: how it's built
 
-The running pieces, the stack and why, the folder layout, how data moves, and the build
+The running pieces, the stack and why, the folder layout, the design system (the shared
+parts every screen is built from, plus the sizes and colors), how data moves, and the build
 sequence. **The build sequence doubles as the roadmap**, which is why this file is worth
 keeping current even before there's much architecture to speak of.
 

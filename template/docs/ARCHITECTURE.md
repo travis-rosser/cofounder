@@ -22,7 +22,18 @@ they are real.
 <tree>
 ```
 
-## <Data flow / state / theming: whatever this system actually has>
+## Design system
+
+<Fill in with the first screen. Until then: "No screens yet.">
+
+- **Shared parts live in:** <folder>
+- **Parts:** <button, text field, dropdown, card, pop-up, page header, empty state, ...>
+- **Text sizes:** <the short list>
+- **Spacing and corner rounding:** <the short lists>
+- **Colors:** <named colors and what each is for>
+- **Icons:** <Font Awesome Free, or the set this project already used>
+
+## <Data flow / state: whatever this system actually has>
 
 ## Build sequence
 
