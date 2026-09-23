@@ -2,4 +2,8 @@
 node_modules/
 .env
 .env.*
+!.env.example
 .worktrees/
+
+__pycache__/
+*.pyc

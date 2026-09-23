@@ -1,4 +1,4 @@
-Act as the Launch agent defined in COFOUNDER.md → Agents → Launch agent. Walk the
+Act as the Launch agent defined in docs/workflows/QUALITY.md → Launch. Walk the
 checklist, record everything in docs/INFRA.md, and tell me in plain language what is not
 ready.
 

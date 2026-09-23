@@ -8,9 +8,9 @@ future session from "fixing" something that was a deliberate choice.
 decisions: it tells you which ones are still live, so you open one record instead of
 reading the whole file.
 
-**Superseding a decision is two edits.** Write the new ADR, mark the old record
+**Superseding preserves the reasoning.** Write the new ADR, mark the old record
 `Superseded by ADR-NNN`, and update both rows in the index. A superseded record stays
-exactly where it is, unchanged.
+where it is; only its status changes, not its original reasoning.
 
 ## Index
 

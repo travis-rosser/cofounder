@@ -54,7 +54,7 @@ have to be an engineer.
 
 What you need is to know your product, or your idea, or your industry. The agent is going
 to bring you real decisions: what this is for, who it's for, what's in and what's out, and
-and what the smallest version is that proves it. That's the cofounder's half of the deal.
+what the smallest version is that proves it. That's the cofounder's half of the deal.
 Your half is to decide.
 
 If you're a strong engineer, you'll probably build your own version of this, and you'd be
@@ -64,29 +64,16 @@ right to. I built this one for everyone else.
 
 ## How your agent remembers today
 
-Worth knowing, because it explains everything that follows.
+Agents differ in how they retain conversations and personal memory. That does not give
+your project a shared, inspectable record that every agent can reliably pick up.
 
-Your coding agent has no memory between sessions. Close the window and the conversation is
-gone. What survives is one file it reads automatically at the start of every session:
-Claude Code reads `CLAUDE.md`, and Codex, Cursor, Copilot and Windsurf read `AGENTS.md`.
+Cofounder puts that record alongside the code. The briefing is `AGENTS.md`; the template
+also supplies `CLAUDE.md` and `GEMINI.md` imports. Setup checks that your tool actually
+loads the instructions instead of assuming every version behaves the same way.
 
-That file is the memory. All of it.
-
-So everything you want remembered has to go in there, and you find that out the hard way.
-Day one it's three lines. Then you add the decision it keeps undoing, and the convention it
-keeps ignoring, and what not to touch, and the bug from last week, and the roadmap, and the
-reason you said no to the obvious approach.
-
-Now think about what you're asking one file to do. Every decision, every mistake, every
-idea, the features, the roadmap, the reasons, months of a project, in a single document,
-read start to finish before every single task.
-
-Nothing about that makes sense.
-
-So it gets enormous, half of it goes stale, and the agent gets slower and vaguer the more
-you put in. The longer you work on the project, the dumber it gets. By month two you're
-spending the first twenty minutes of every session re-explaining your own product to the
-thing that built it.
+The trap is putting everything in that first file: decisions, mistakes, conventions,
+roadmaps, and months of history. It grows, gets stale, and makes the useful facts harder
+to find. So keep the current picture short and link to the details when they matter.
 
 ---
 
@@ -102,22 +89,24 @@ them. The one it reads every session is the shortest on purpose.
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#ffffff','primaryTextColor':'#18181b','primaryBorderColor':'#3f3f46','secondaryColor':'#fafafa','tertiaryColor':'#ffffff','lineColor':'#52525b','textColor':'#18181b','clusterBkg':'#f4f4f5','clusterBorder':'#a1a1aa','edgeLabelBackground':'#ffffff','nodeBorder':'#3f3f46'},'flowchart':{'padding':14,'nodeSpacing':20,'rankSpacing':26,'diagramPadding':16,'useMaxWidth':true}}}%%
 flowchart TB
-    subgraph T0["TIER 0 · Loaded automatically, every session"]
+    subgraph T0["TIER 0 · Read every session"]
         CM["<b>AGENTS.md</b> · the briefing<br/><i>Where are we right now</i>"]
         COF["<b>COFOUNDER.md</b><br/><i>How the agent behaves</i>"]
+        RES["<b>RESUME.md</b><br/><i>Where to pick up</i>"]
     end
     subgraph T1["TIER 1 · Permanent reference, read when relevant"]
         SPEC["<b>SPEC.md</b> · <i>what it is</i>"]
         ARCH["<b>ARCHITECTURE.md</b> · <i>how it is built</i>"]
         DEC["<b>DECISIONS.md</b> · <i>why, append-only</i>"]
         INFRA["<b>INFRA.md</b> · <i>what breaks without what</i>"]
+        FLOW["<b>docs/workflows/</b> · <i>procedures when needed</i>"]
     end
     subgraph T2["TIER 2 · Running lists, appended and pruned"]
         BACK["<b>BACKLOG.md</b> · <i>decided later</i>"]
         UPD["<b>UPDATES.md</b> · <i>small, real, easy to lose</i>"]
         HELP["<b>HELP-ARTICLES.md</b> · <i>what users will need explained</i>"]
     end
-    subgraph T3["TIER 3 · Write once, then leave alone"]
+    subgraph T3["TIER 3 · Feature records and indexed history"]
         SPECS["<b>docs/specs/</b> · <i>one design doc per feature</i>"]
         PLANS["<b>docs/plans/</b> · <i>cross-cutting plans</i>"]
         LOGS["<b>docs/logs/</b> · <i>what happened on the big days</i>"]
@@ -125,15 +114,16 @@ flowchart TB
     T0 ~~~ T1 ~~~ T2 ~~~ T3
 
     classDef box fill:#ffffff,stroke:#52525b,color:#18181b,stroke-width:1px
-    class CM,COF,SPEC,ARCH,DEC,INFRA,BACK,UPD,HELP,SPECS,PLANS,LOGS box
+    class CM,COF,RES,SPEC,ARCH,DEC,INFRA,FLOW,BACK,UPD,HELP,SPECS,PLANS,LOGS box
     style T0 fill:#f4f4f5,stroke:#a1a1aa,color:#18181b
     style T1 fill:#f4f4f5,stroke:#a1a1aa,color:#18181b
     style T2 fill:#f4f4f5,stroke:#a1a1aa,color:#18181b
     style T3 fill:#f4f4f5,stroke:#a1a1aa,color:#18181b
 ```
 
-Each file has one job. The agent reads the short one every time and the others only when
-they're relevant, so it never gets slower or dumber as the project grows.
+Each file has one job. The agent reads the briefing, working agreement, and resume note
+each session, checks the current queues, and loads detailed procedures when relevant.
+This limits routine reading; it does not guarantee perfect recall or performance.
 
 Three things make that hold up over months:
 
@@ -143,7 +133,7 @@ Three things make that hold up over months:
   session logs, gets an index instead of being read front to back.
 - **Stale text is worse than no text.** You'd read an old note and think "that's probably
   not true anymore." The agent won't. It'll build it. So every file says what it's in
-  charge of and carries a date.
+  charge of and records when current facts were checked. A date alone does not prove accuracy.
 - **Decisions have to defend themselves.** If you don't write down why you chose
   something, a future session will helpfully undo it. And the part that does the real work
   isn't the decision, it's the list of what you rejected and why.
@@ -169,11 +159,10 @@ hard way. All the things a normal human would keep track of.
 
 Three reasons.
 
-**It works in any agent.** This isn't a Claude thing, even though I built it with Claude.
-The briefing ships as `AGENTS.md`, which Codex, Cursor, Copilot, and Windsurf already read
-on their own, and Claude Code and Gemini CLI get a two-line pointer to the same file. An
-app would be one tool's app. A folder of Markdown works everywhere, and whatever comes
-next will read it too.
+**It is designed to travel between agents.** The common instructions are plain Markdown.
+Tool-specific entry files and optional Claude commands sit around them. Discovery,
+imports, and hooks differ by tool, so kickoff verifies what loads. The same project
+preferences and resume note stay in the repo regardless of which agent reads them.
 
 **You can read it.** Open `COFOUNDER.md` and you'll see, in plain English, how your
 cofounder thinks. No generator, nothing hidden. If you want to know why it just pushed back
@@ -244,34 +233,21 @@ Not after. A doc you'll update later is a doc you'll never update.
 
 ---
 
-## Who wins when two files disagree
+## Intent and reality
 
-Two files will disagree. It's not a question of if. And without a rule, the agent just
-picks one, and you won't know which. This list is the single most useful thing in the
-template.
+Two files will disagree. Cofounder separates what you want from what currently works.
 
-```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#ffffff','primaryTextColor':'#18181b','primaryBorderColor':'#3f3f46','secondaryColor':'#fafafa','tertiaryColor':'#ffffff','lineColor':'#52525b','textColor':'#18181b','clusterBkg':'#f4f4f5','clusterBorder':'#a1a1aa','edgeLabelBackground':'#ffffff','nodeBorder':'#3f3f46'},'flowchart':{'padding':18,'nodeSpacing':40,'rankSpacing':50,'diagramPadding':20,'curve':'basis','useMaxWidth':true}}}%%
-flowchart TB
-    A["1 · Whatever you said most recently"] --> B["2 · Accepted behavior in SPEC.md and docs/specs/"]
-    B --> C["3 · Decisions in DECISIONS.md that haven't been superseded"]
-    C --> D["4 · Current facts in ARCHITECTURE.md and INFRA.md"]
-    D --> E["5 · The code as it actually exists"]
-    E --> F["6 · Everything else: old research, vendored references, notes"]
+**Intent:** your latest explicit direction comes first, followed by accepted specs and
+non-superseded decisions. Drafts and old research do not silently become requirements.
+If accepted specs disagree, the agent reconciles the disputed behavior before building.
 
-    classDef box fill:#ffffff,stroke:#52525b,color:#18181b,stroke-width:1px
-    class A,B,C,D,E,F box
-```
+**Reality:** the agent inspects code, runs checks, and observes the actual environment.
+Architecture and infrastructure docs summarize those facts; they cannot prove a feature
+works just by saying it does.
 
-Two things make it work:
-
-- **You are always number one.** The files are input, not the boss. When something
-  written down conflicts with what you just asked for, the agent says so in one sentence,
-  tells you where the rule came from, and then does what you asked. It doesn't get to
-  overrule you with your own notes.
-- **The spec beats the code.** If the code and an accepted spec disagree, the spec is what
-  you meant, until somebody deliberately changes it. Otherwise a bug quietly becomes a
-  feature.
+If the spec says billing works but the implementation is incomplete, the agent reports
+both facts. A bug does not become a requirement, and a plan does not become a shipped
+feature. Your decision resolves the intended behavior, and the docs change with it.
 
 ---
 
@@ -279,7 +255,7 @@ Two things make it work:
 
 ### The briefing: `AGENTS.md`
 
-**Root of the repo. Loaded before anything else happens.**
+**Root of the repo. The common starting point for a session.**
 
 The one file that answers "where are we right now" in a single read. Keep it short. Letting
 it grow is the number one way this whole thing falls apart, and it grows on its own if you
@@ -290,7 +266,8 @@ What's in it:
 - **Working relationship.** Who decides what. Be blunt here.
 - **Current snapshot.** Dated, with the project's **stage**. What's built, what stack,
   what's running, what you're deliberately not doing.
-- **Source-of-truth order.** The list from the section above.
+- **Confirmed project preferences.** How this founder wants this project built.
+- **Intent and reality.** What should happen versus what has been verified.
 - **File map.** A table of what lives where.
 - **House rules.** The handful of conventions that actually get broken. Not all of them.
 - **Documentation rules.** When a spec is required, how decisions get superseded, when
@@ -303,105 +280,90 @@ in this file, that's a decision record. Move it.
 
 ### `COFOUNDER.md`: how the agent behaves
 
-**Root of the repo, next to the briefing. Rarely changes.**
+The short working agreement, read each session. Detailed kickoff, Git, design, QA, and
+launch procedures live in `docs/workflows/` and load when needed.
 
-The briefing says where the project is. This file says how the cofounder acts. It's the
-file the whole thing is named after, and it's the one I'd read if you only read one.
+**The role.** You own product decisions. The agent makes technical calls, explains their
+consequences, challenges assumptions, and follows through. It can recommend a simpler
+experiment without repeatedly arguing after you decide. New evidence can justify a new
+conversation.
 
-**The role.** Make the technical calls. Recommend with a default instead of asking about
-plumbing. Explain in consequences, not technologies. Push back like a partner would:
-*"I think this is a mistake, here's why, your call."* Then do what you decide, and
-do it well. Always bring up security, money, user data, and anything you can't undo,
-without being asked.
+**MVP first.** Build the smallest useful version. Use clearly identified dummy data to
+judge appearance and flow before wiring services when that answers the question. Real
+users must not mistake simulated behavior for a working integration.
 
-**Stage, not scale.** The briefing records a stage: Idea, Prototype, First users, Growing,
-Established. Every technical choice is sized to it. No queues, caches, or
-clever-abstractions-for-later until the current stage actually hurts. The exception is the
-expensive-to-change stuff, like the data model, login, and anything touching money. Those
-are worth getting right early. Before a big choice, the agent says which bucket it's in:
-cheap to change later, or expensive. That one habit prevents most over-engineering, and
-most under-engineering too.
+**Stage, not scale.** Avoid machinery for hypothetical future needs. Use the simplest
+option that meets today's requirements. Flag choices that would be expensive to reverse,
+without using them as a reason to overbuild the whole product.
 
-**Buy, don't build.** Payments, login, email, texting, hosting, file storage. These are
-commodities. The agent picks the most widely used service at the time, prefers one platform
-that bundles hosting, database, users, and domains, writes it down in `INFRA.md`, and never
-asks you to pick from a list they've never heard of. No vendor names in
-the template, because they go stale and the agent already knows them.
+**Buy, don't build.** Prefer established services where appropriate. Choose for current
+requirements, budget, existing accounts, and switching costs. Check current capabilities
+and pricing; record the choice in `INFRA.md`. Secrets never go in tracked files or chat.
 
-**Sizing.** Every request gets called a Tweak, a Feature, or a Direction, out loud. A tweak
-gets a line in `UPDATES.md` and gets built now. A feature gets a spec and its own branch. A
-direction gets a brainstorm and a decision record first. Money, user data, and login are
-never tweaks, no matter how small they look.
+**Sizing.** A Tweak gets implemented and verified without a separate planning ceremony.
+A Feature gets a short accepted spec and relevant QA. A Direction gets a brainstorm and
+recorded decision. Money, data, and login changes always get Feature-level checks.
 
-**Keeping the memory usable.** The rules that stop the whole thing rotting as the project
-ages. The briefing stays a snapshot. Past roughly 150 lines it isn't one any more, and
-moving history out comes before other work. Decisions are read through their index, never
-front to back. Session logs go in `docs/logs/` with their index line written in the same
-change. The running lists get pruned when an item lands somewhere permanent. Every file
-says what it's in charge of and carries a date.
+**Modes.** Brainstorm clarifies and scopes. Build implements and verifies. Review audits
+without making changes. Plain phrases work; Claude commands are optional conveniences.
 
-**Modes.** Three of them. You switch with plain words:
+**Quality lenses.** The current agent applies Design standards to visible interfaces,
+QA to features and sensitive flows, and Launch checks before going live. These are not
+mandatory extra agents. During a build, it repairs ordinary in-scope defects itself;
+a standalone review remains read-only. Optional skills can add depth.
 
-| Mode | You say | What happens |
-|---|---|---|
-| Brainstorm | "let's brainstorm," "I have an idea" | No code. Questions first, argue the other side once, end with a draft spec or a backlog line. |
-| Build | the default | Spec, then code, then verify, then docs in the same change. |
-| Review | "let's review," "what's fragile" | Nothing changes. What's fragile, over-built, missing, or out of sync. Ordered recommendations. |
+**Done means checked.** The agent reports what changed, where you can see it, what it
+actually verified, what is simulated or unverified, and any decision still needed.
+A commit is not proof of correctness, and a completed change is not necessarily deployed.
 
-**Agents.** Modes are phases. Agents are lenses, as in whose standards apply. Three of
-them, with their standards written right into the file so they work with nothing installed:
+**One agent or several.** Both are supported. A single agent can stay in the project
+folder, including on a feature branch. Concurrent writers each get a separate worktree
+and branch, even for small changes. One agent integrates at a time and verifies the
+combined result. Worktrees separate files, not databases or external accounts.
 
-| Agent | Runs when | Exists to |
-|---|---|---|
-| Design | Any screen a user will see gets built | Stop generic, forgettable UI. Shared parts from the first screen, outside designs brought in as parts, Font Awesome icons, every state designed, checked on a phone before it's called done. |
-| QA | Before any Feature is called done. Always for money, data, login | Break it first: bad input, refresh mid-flow, slow network. Reports, doesn't fix. |
-| Launch | "Let's go live," and raised by the agent at First users | Hosting, domain, secrets, backups, rollback, and "can a stranger use this." |
+**The optional guard.** In Claude Code, a small hook blocks covered edits on detached
+checkouts. Enabling parallel mode also reserves the primary checkout for integration.
+It allows normal single-agent branches. It is not a lock: shell writes and shared
+resources are outside its coverage. Python 3 is required for this optional hook.
 
-Optional accelerators ([impeccable](https://github.com/pbakaus/impeccable),
-[frontend-design](https://github.com/anthropics/skills),
-[superpowers](https://github.com/obra/superpowers)) are listed with install notes. The
-agent offers to install them. It never blocks on them.
+**First session.** Inspect what exists, ask only what is missing, confirm preferences,
+and leave a useful briefing and next action. Existing projects keep their docs and
+configuration; adoption merges useful rules instead of overwriting them with stubs.
 
-**Git and parallel sessions.** Git is the undo button for your whole project. It's
-required. GitHub (the website) isn't, not yet. And you never type a git command; the agent
-does it and saves a checkpoint after every change it's verified, so "undo that" and "what
-changed today" just work.
+### Preferences belong to this project
 
-Here's the problem the rest of this solves. You're going to open several agent sessions at
-once. Everybody does. Two sessions
-editing the same files overwrite each other and start doing each other's work. So:
-**sessions never share a folder.** The main folder stays on `main`. Tweaks get built there
-and committed immediately. Anything bigger gets its own worktree, which is a sibling copy of
-the project on its own branch. Collisions become impossible instead of just detectable. In
-Claude Code a shipped hook enforces it: an edit in the main folder on the wrong branch gets
-refused, not frowned at. GitHub comes up at First users, when you need a backup and hosting
-needs a repository.
+Your product experience and working preferences should be available to every agent in
+this project. Record confirmed preferences in `AGENTS.md`. The default suggestions are
+MVP-first, dummy data when useful, brief explanations, and simple single-agent operation.
+They are defaults, not requirements for every founder or every project.
 
-Claude Code users also get `/kickoff`, `/brainstorm`, `/build`, `/review`, `/design`,
-`/qa`, and `/launch` from the optional `.claude/commands/` folder. Other tools delete that
-folder. The plain phrases work everywhere.
+An optional personal profile can provide a starting point. This project's confirmed
+preferences win. Do not transfer unrelated product decisions or private personal details
+between projects, and do not turn an agent's guess into a permanent preference.
 
-**The first session.** If the briefing still has placeholders in it, the agent knows nobody
-has filled it in yet. It interviews you in plain questions, a few at a time, defaults the
-stage to Idea, fills in the briefing and the stubs, and writes the first decision record.
-You never edit a placeholder by hand.
+### `docs/RESUME.md`: where to pick up
 
-### Things that are true about you, not the project
+A short, mutable checkpoint: accepted scope, branch or worktree, last verified code commit,
+what is complete, what remains, actual check results, blockers, and the next action.
+Update it at meaningful checkpoints and before pausing. Read and verify it on return.
 
-**Not a file in the template. It belongs in your agent's own memory, wherever that lives.**
+This is useful even when you stay with the same agent. It is also the handoff when you
+switch tools within the same project. Concurrent tasks use separate notes in
+`docs/handoffs/` so they do not all rewrite the same checkpoint.
 
-How you like to work, what you've corrected before, preferences you're tired of repeating. These
-follow you from project to project, so they don't belong in any one project's repo.
-The briefing says exactly that, in its file map, and leaves the mechanism to your tool.
-Most agents have some form of long-term memory; the template doesn't assume which.
+### `docs/workflows/`: details when needed
 
-The test: **would this still be true in a different project?** If yes, it's your agent's
-memory. If no, it belongs in the repo.
+- `KICKOFF.md`: new-project setup and safe existing-project adoption.
+- `GIT.md`: single-folder work, optional concurrent worktrees, integration, and guard limits.
+- `QUALITY.md`: design, QA, launch, and optional skills.
+
+Keep the working agreement short; move procedure details here when they are only needed
+for a particular kind of work.
 
 ### `docs/SPEC.md`: what it is
 
-The source of truth for behavior. When the code and the spec disagree, the spec wins until
-somebody changes it on purpose.
+The source of truth for accepted intent. When observed behavior disagrees, report the
+mismatch; verify implementation before claiming the intended behavior works.
 
 Keep it to what someone can do and what happens when they do it. Not how it's built. Once a
 project has a lot of features, this file turns into an index and the detail moves to
@@ -409,10 +371,9 @@ project has a lot of features, this file turns into an index and the detail move
 
 ### `docs/ARCHITECTURE.md`: how it's built
 
-The running pieces, the stack and why, the folder layout, the design system (the shared
-parts every screen is built from, plus the sizes and colors), how data moves, and the build
-sequence. **The build sequence doubles as the roadmap**, which is why this file is worth
-keeping current even before there's much architecture to speak of.
+The running pieces, stack, folder layout, shared design parts, and how data moves.
+Link to the backlog and accepted specs for planned work; keep future work separate
+from the system that actually exists.
 
 It describes the system that *actually exists*. Ideas live in a spec or a decision record
 until they're real.
@@ -493,13 +454,14 @@ Optional. Delete it if the project will never face users who need explaining to.
 This is the spec, plan, code sequence made permanent, so the reasoning behind a feature
 outlives the session that built it.
 
-A spec has: the problem and the outcome you want, scope, the flow, every state including
-the failure states, what it does to data, open questions, and how you'll know it's done.
+A spec has: the problem and desired outcome, scope, flow, failure states, data changes,
+open questions, and acceptance criteria. Identify simulated behavior and, when useful,
+the assumption being tested and the evidence that would change your mind.
 The template ships `SPEC-TEMPLATE.md` and `PLAN-TEMPLATE.md` in this folder. Copy them,
 don't edit them.
 
-Mark a spec `Draft` until it's accepted. `Draft` means "not yet real," and the agent treats
-it that way.
+Mark a spec `Draft` until its scope is accepted. An explicit request to implement a
+clear scope can accept it; merely writing a draft does not authorize a build.
 
 ### `docs/plans/`: plans that cross features
 
@@ -531,14 +493,14 @@ new log or a new decision record, not a rewrite of the old one.
 
 ## The rules
 
-1. **One snapshot, one history.** The briefing is the snapshot. Everything else is history
-   or reference. Don't let them blur.
+1. **Separate snapshot, progress, and history.** The briefing describes the project;
+   the resume note tracks unfinished work; logs preserve significant history.
 2. **Decisions only get added to.** Supersede, never rewrite.
 3. **Docs change in the same commit as behavior.**
 4. **Don't duplicate.** Link to the one place a fact lives. Duplicated facts drift apart,
    and then the agent picks the wrong one.
-5. **Every file says what it's in charge of.** A dated status header costs one line and
-   stops the agent from trusting something stale.
+5. **Verify current facts.** A dated header helps locate stale information; checking
+   the actual system establishes whether it is still true.
 6. **Anything that only grows gets an index.** Decisions and session logs are never read
    front to back. The index line is written in the same change as the thing it indexes.
 7. **You are the authority.** Documents inform. They don't overrule.
@@ -566,13 +528,15 @@ new log or a new decision record, not a rewrite of the old one.
 
 ```
 your-project/
-├── AGENTS.md                    ← the briefing, loaded automatically
+├── AGENTS.md                    ← the briefing and project preferences
 ├── CLAUDE.md, GEMINI.md         ← pointers that load AGENTS.md + COFOUNDER.md
 ├── COFOUNDER.md                 ← how the agent behaves
 ├── README.md                    ← for humans showing up cold
 ├── .gitignore
 ├── .claude/                     ← optional: Claude Code slash commands + guard hook
 └── docs/
+    ├── RESUME.md                ← where to pick up unfinished work
+    ├── workflows/               ← kickoff, Git, and quality procedures
     ├── SPEC.md
     ├── ARCHITECTURE.md
     ├── DECISIONS.md
@@ -601,8 +565,8 @@ session, and runs the kickoff. It asks you a few questions at a time, fills in t
 briefing, writes the first decision record, and reads the whole thing back to you in plain
 English so you can tell it what's wrong.
 
-Ten minutes in, you have a project that remembers itself and a cofounder that will look at
-your next request and say "I think this is a mistake, here's why, your call."
+The first session leaves a shared briefing, confirmed preferences, and a next step.
+Your agent can then say, "We can test this with less. Here is how. Your call."
 
 Then go bring your idea to life.
 
@@ -610,9 +574,14 @@ Do this on day one if you can. You can add it to a project that's already runnin
 will clean things up, but the context that's already lost is lost. Nobody remembers why
 that decision got made in week three, and the agent certainly doesn't.
 
-**If you're an agent reading this:** the kickoff procedure is in `template/COFOUNDER.md`
-under "The first session." Copy `template/` into the builder's project root, then follow
-it.
+For an existing project, say:
+
+> Adopt Cofounder in this project. Preserve my existing files and settings, merge the
+> useful instructions, and confirm this project's working preferences.
+
+**If you're an agent reading this:** follow `template/docs/workflows/KICKOFF.md`.
+Copy the template into an empty root, including hidden files. For an existing project,
+merge deliberately; never overwrite current docs or settings with template stubs.
 
 ---
 
@@ -620,17 +589,37 @@ it.
 
 Not every project needs all of it.
 
-- **Small or short-lived:** the briefing, `DECISIONS.md`, and `UPDATES.md`.
+- **Small or short-lived:** keep the working agreement, briefing, resume note, and
+  decision record. Leave other docs as stubs until needed.
 - **No infrastructure:** keep `INFRA.md` and say so. "No infrastructure, on purpose" is a
   useful thing for an agent to read.
 - **No users yet:** drop `HELP-ARTICLES.md` until there's a help surface.
-- **Solo and moving fast:** skip `docs/plans/`, keep plans inside `docs/specs/`.
+- **Solo and moving fast:** stay in one folder; use a short feature spec and a plan only
+  when it helps.
+- **Several agents at once:** follow `docs/workflows/GIT.md` for separate worktrees,
+  task handoffs, and one integration owner.
 
 What you should never drop: the **briefing**, **`COFOUNDER.md`**, the **decision record**,
-and the **precedence list**. Those four carry most of the value.
+the **resume note**, and the **intent-versus-reality distinction**.
 
 It all comes down to one thing: you're giving your agent what a cofounder actually brings.
 A memory, a structure to keep it in, and opinions about how to build.
+
+---
+
+## Checking the harness
+
+The optional Git guard has automated tests. From this repository's root:
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+[VALIDATION.md](VALIDATION.md) defines realistic scenarios for fresh Claude Code and
+Codex sessions, including single-agent work, concurrent agents, interrupted work, and
+existing-project adoption. Hook tests do not prove those agent behaviors; record live
+results separately. [CHANGELOG.md](CHANGELOG.md) explains the workflow changes in plain
+language.
 
 ---
 

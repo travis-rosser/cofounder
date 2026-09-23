@@ -35,9 +35,9 @@ they are real.
 
 ## <Data flow / state: whatever this system actually has>
 
-## Build sequence
+## Planned work
 
-<Numbered. This doubles as the roadmap.>
+<Link to `BACKLOG.md` and accepted specs. Keep future work separate from current facts.>
 
 ## To decide before <milestone>
 

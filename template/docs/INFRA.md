@@ -19,8 +19,8 @@ and what fails when it is missing.
 
 ## External services
 
-| Capability | Provider | Configured where | Failure impact | Status |
-|---|---|---|---|---|
+| Capability | Provider | Cost / billing basis | Configured where | Failure impact | Status |
+|---|---|---|---|---|---|
 
 ## Variables and secrets
 

@@ -1,5 +1,6 @@
-Run the first session as defined in COFOUNDER.md → The first session.
+Run the first session in docs/workflows/KICKOFF.md.
 
-Read the folder, enter Brainstorm, interview me a few questions at a time, default the
-stage to Idea, fill in AGENTS.md and the docs/ stubs, write ADR-001, then read the snapshot
-back to me in plain language.
+Inspect the project first. Preserve existing files, confirm project preferences, fill
+unknowns honestly, and leave a brief snapshot and next action in docs/RESUME.md.
+
+Context: $ARGUMENTS

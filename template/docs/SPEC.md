@@ -3,8 +3,8 @@
 **Status:** <Pre-build | Draft | Current>
 **Last updated:** <YYYY-MM-DD>
 
-Source of truth for behavior. When the code and this file disagree, this file describes
-intent until someone deliberately changes it.
+Source of truth for accepted intent, not proof of implementation. When code or observed
+behavior differs, report the mismatch. Verify actual behavior before claiming it works.
 
 Keep this about observable behavior: what someone can do and what happens. Implementation
 belongs in `ARCHITECTURE.md`; reasoning belongs in `DECISIONS.md`.

@@ -22,6 +22,8 @@ This project uses the [Cofounder](https://cofounder.md) project harness. Start w
 |---|---|
 | `AGENTS.md` | Where the project is right now (`CLAUDE.md` and `GEMINI.md` point here) |
 | `COFOUNDER.md` | How the agent works with you |
+| `docs/RESUME.md` | Where to pick up unfinished work |
+| `docs/workflows/` | Procedures read when needed |
 | `docs/SPEC.md` | What it does |
 | `docs/ARCHITECTURE.md` | How it is built |
 | `docs/DECISIONS.md` | Why: append-only decision records |

@@ -4,7 +4,8 @@
 **Status:** Draft | Accepted | Shipped | Abandoned
 **Plan:** `<YYYY-MM-DD-short-description-plan.md>` | none needed
 
-`Draft` means not yet committed behavior. Do not build from a draft without saying so.
+`Draft` means not yet accepted behavior. The founder's explicit instruction to build
+a clear scope can accept it; a document marked Draft alone does not authorize a build.
 
 ## Problem
 
@@ -13,6 +14,14 @@
 ## Outcome
 
 <What is true when this is done. Observable, not technical.>
+
+## Assumption to test (optional)
+
+<What we hope to learn, and what evidence would change our mind. Omit if not applicable.>
+
+## Prototype boundaries
+
+<What uses dummy data or simulated behavior? What must become real before users rely on it?>
 
 ## Scope
 
