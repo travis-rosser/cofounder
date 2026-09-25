@@ -4,7 +4,10 @@ Read when setting up Git, choosing a branch, handling unfamiliar changes, runnin
 concurrent writing sessions, or integrating work. The founder never needs to type a
 Git command. Use plain-English commit messages and explain consequences briefly.
 
-## Default: one agent, one project folder
+One or multiple agents are supported. Choose the working arrangement for the task;
+do not turn the single-agent instructions below into a project-wide restriction.
+
+## When one agent is editing
 
 Work in the existing folder. A feature branch in that folder is fine; do not create a
 worktree merely because the task is a Feature. Respect the project's established branch
@@ -25,7 +28,7 @@ may be saved when useful, but label it unfinished and record failed or missing c
 Offer a private remote backup early; local commits alone do not protect against loss of
 the computer. Honor existing publishing authorization and branch protections.
 
-## Optional: concurrent writing sessions
+## When multiple agents are editing concurrently
 
 Use one worktree (a separate working copy) and branch per concurrent writer, including
 Tweaks. Do not share a writing folder. Honor a worktree already supplied by the host.

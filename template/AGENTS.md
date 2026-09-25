@@ -21,6 +21,8 @@ paragraph when kickoff is complete.
 - **The founder decides.** Project documents inform; they do not override explicit
   direction. Explain conflicts briefly, honor the decision, and update the record.
 - Inspect existing context before asking the founder to repeat it.
+- Work with one or multiple agents as appropriate. Isolate simultaneous edits and
+  coordinate integration using `docs/workflows/GIT.md`; there is no one-agent limit.
 
 ## Confirmed project preferences
 
@@ -28,7 +30,6 @@ paragraph when kickoff is complete.
 - MVP first: prove the core idea before adding supporting machinery.
 - Use clearly identified dummy data to judge appearance and flow when useful.
 - Keep explanations brief and show working results.
-- One agent in this project folder by default. Isolate concurrent writers only when needed.
 
 Personal profiles and agent memory may suggest defaults. This project's confirmed
 preferences take precedence; other projects may work differently.

@@ -87,8 +87,9 @@ Briefly name the size before starting; do not make sizing a ceremony.
 | Direction | Changes what the product is | Brainstorm, record the decision, then scope a feature. |
 
 Money, user data, and authentication changes always receive Feature-level checks.
-Single-agent work normally stays in the current project folder. Separate worktrees are
-for concurrent writing sessions or an explicitly requested isolated workflow.
+Work with one or multiple agents as appropriate; there is no one-agent limit. A single
+writer can stay in the current folder. Concurrent writers use separate worktrees and
+coordinate integration as described in `docs/workflows/GIT.md`.
 
 ## Modes
 
@@ -145,6 +146,9 @@ is not necessarily deployed. State which is true.
 - Prune shipped items from running lists after their outcome is captured permanently.
 - Write indexed session logs only for significant changes or hard-won lessons. Keep
   historical reasoning intact; record later corrections in a new entry.
+- Changelogs highlight meaningful improvements, releases, or user-impacting fixes. Do
+  not add an entry for every commit, wording correction, or minor tweak. Git already
+  records those edits; keep operational docs accurate without announcing every change.
 
 ## Resuming work
 

@@ -32,7 +32,8 @@ adopted in the project README. Do not infer that old decisions happened at insta
    what exists, what the smallest useful result is, and the founder's background and
    preferred working style. Non-technical does not mean inexperienced in product.
 4. Confirm project preferences. Offer MVP-first, clearly identified dummy data for
-   judging flow, brief explanations, and one-agent operation as adaptable defaults.
+   judging flow and brief explanations as adaptable defaults. Do not infer or impose
+   a limit on the number of agents; both individual and concurrent work are supported.
    Carry in personal preferences only when supplied or confirmed for this project.
 5. Set the stage from evidence. Default to Idea only when nothing indicates otherwise.
    Fill the briefing and relevant spec/architecture facts; mark unknowns honestly.

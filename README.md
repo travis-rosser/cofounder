@@ -334,8 +334,9 @@ configuration; adoption merges useful rules instead of overwriting them with stu
 
 Your product experience and working preferences should be available to every agent in
 this project. Record confirmed preferences in `AGENTS.md`. The default suggestions are
-MVP-first, dummy data when useful, brief explanations, and simple single-agent operation.
-They are defaults, not requirements for every founder or every project.
+MVP-first, dummy data when useful, and brief explanations. These are defaults, not
+requirements for every founder or every project. One or multiple agents are supported;
+the template does not prescribe an agent count.
 
 An optional personal profile can provide a starting point. This project's confirmed
 preferences win. Do not transfer unrelated product decisions or private personal details
@@ -618,8 +619,8 @@ python3 -m unittest discover -s tests -v
 [VALIDATION.md](VALIDATION.md) defines realistic scenarios for fresh Claude Code and
 Codex sessions, including single-agent work, concurrent agents, interrupted work, and
 existing-project adoption. Hook tests do not prove those agent behaviors; record live
-results separately. [CHANGELOG.md](CHANGELOG.md) explains the workflow changes in plain
-language.
+results separately. [CHANGELOG.md](CHANGELOG.md) highlights meaningful improvements in
+plain language. Small corrections stay in Git history; they do not each need an entry.
 
 ---
 
